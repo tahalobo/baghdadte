@@ -174,17 +174,17 @@ const Checkout: React.FC = () => {
 
   // Show empty cart message if cart is empty
   if (cartItems.length === 0) {
-    return <div className="flex flex-col min-h-screen">
+    return <div className="flex flex-col min-h-screen bg-[#FFFFFF]">
         <Header />
         
         <main className="flex-grow flex items-center justify-center p-4">
-          <Card className="w-full max-w-md">
+          <Card className="w-full max-w-md bg-[#FFFFFF] border border-[#A0A0A0]/30">
             <CardHeader>
-              <CardTitle>عربة التسوق الخاصة بك فارغة</CardTitle>
-              <CardDescription>أضف بعض المنتجات إلى سلة التسوق لمتابعة عملية الدفع</CardDescription>
+              <CardTitle className="text-[#1F1F2A]">عربة التسوق الخاصة بك فارغة</CardTitle>
+              <CardDescription className="text-[#A0A0A0]">أضف بعض المنتجات إلى سلة التسوق لمتابعة عملية الدفع</CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button className="w-full" onClick={() => navigate('/shop')}>
+              <Button className="w-full bg-[#D13B28] hover:bg-[#D13B28]/90" onClick={() => navigate('/shop')}>
                 مواصلة التسوق
               </Button>
             </CardFooter>
@@ -221,28 +221,28 @@ const Checkout: React.FC = () => {
   const calculateTotal = () => {
     return cartTotal + calculateDeliveryFee() + calculateTax();
   };
-  return <div className="flex flex-col min-h-screen">
+  return <div className="flex flex-col min-h-screen bg-[#FFFFFF]">
       <Header />
       
       <main className="flex-grow pt-24 pb-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold mb-8 text-center">الطلب</h1>
+          <h1 className="text-3xl font-bold mb-8 text-center text-[#1F1F2A]">الطلب</h1>
           
           {/* Checkout Steps */}
           <div className="flex justify-center mb-8 overflow-x-auto">
             <div className="flex w-full max-w-3xl">
               {steps.map((step, index) => <React.Fragment key={step.number}>
                   <div className={`flex flex-col items-center ${index > 0 ? 'flex-1' : ''}`}>
-                    <div className={`relative flex items-center justify-center w-10 h-10 rounded-full ${step.number === currentStep ? 'bg-primary text-white' : step.number < currentStep ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-600'}`}>
+                    <div className={`relative flex items-center justify-center w-10 h-10 rounded-full ${step.number === currentStep ? 'bg-[#D13B28] text-white' : step.number < currentStep ? 'bg-green-500 text-white' : 'bg-[#A0A0A0]/30 text-[#1F1F2A]'}`}>
                       {step.number < currentStep ? <CheckCircle className="h-6 w-6" /> : step.icon}
                     </div>
-                    <span className={`text-sm mt-2 font-medium ${step.number === currentStep ? 'text-primary' : 'text-gray-600'}`}>
+                    <span className={`text-sm mt-2 font-medium ${step.number === currentStep ? 'text-[#D13B28]' : 'text-[#A0A0A0]'}`}>
                       {step.title}
                     </span>
                   </div>
                   
                   {index < steps.length - 1 && <div className={`flex-1 flex items-center max-w-[80px]`}>
-                      <div className={`h-1 w-full ${step.number < currentStep ? 'bg-green-500' : 'bg-gray-200'}`}></div>
+                      <div className={`h-1 w-full ${step.number < currentStep ? 'bg-green-500' : 'bg-[#A0A0A0]/30'}`}></div>
                     </div>}
                 </React.Fragment>)}
             </div>
@@ -259,14 +259,14 @@ const Checkout: React.FC = () => {
           }} transition={{
             duration: 0.3
           }} key={currentStep}>
-              <Card>
+              <Card className="bg-[#FFFFFF] border border-[#A0A0A0]/30">
                 <CardHeader>
-                  <CardTitle>
+                  <CardTitle className="text-[#1F1F2A]">
                     {currentStep === 1 && "معلومات العميل"}
                     {currentStep === 2 && "معلومات الشحن"}
                     {currentStep === 3 && "مراجعة طلبك"}
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-[#A0A0A0]">
                     {currentStep === 1 && "الرجاء إدخال بيانات الاتصال الخاصة بك"}
                     {currentStep === 2 && "إلى أين يجب أن نشحن طلبك؟"}
                     {currentStep === 3 && "يُرجى مراجعة طلبك قبل التأكيد"}
@@ -278,43 +278,89 @@ const Checkout: React.FC = () => {
                   {currentStep === 1 && <div className="space-y-4">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="firstName">اسم العميل *</Label>
-                          <Input id="firstName" name="firstName" value={formData.firstName} onChange={handleInputChange} placeholder="طه" required />
+                          <Label htmlFor="firstName" className="text-[#1F1F2A]">اسم العميل *</Label>
+                          <Input 
+                            id="firstName" 
+                            name="firstName" 
+                            value={formData.firstName} 
+                            onChange={handleInputChange} 
+                            placeholder="طه" 
+                            required 
+                            className="border border-[#A0A0A0]/30 text-[#1F1F2A]"
+                          />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="lastName">اسم والد العميل *</Label>
-                          <Input id="lastName" name="lastName" value={formData.lastName} onChange={handleInputChange} placeholder="عبدالرحمن" required />
+                          <Label htmlFor="lastName" className="text-[#1F1F2A]">اسم والد العميل *</Label>
+                          <Input 
+                            id="lastName" 
+                            name="lastName" 
+                            value={formData.lastName} 
+                            onChange={handleInputChange} 
+                            placeholder="عبدالرحمن" 
+                            required 
+                            className="border border-[#A0A0A0]/30 text-[#1F1F2A]"
+                          />
                         </div>
                       </div>
                       
                       <div className="space-y-2">
-                        <Label htmlFor="email">الايميل *</Label>
-                        <Input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} placeholder="john.doe@example.com" required />
+                        <Label htmlFor="email" className="text-[#1F1F2A]">الايميل *</Label>
+                        <Input 
+                          id="email" 
+                          name="email" 
+                          type="email" 
+                          value={formData.email} 
+                          onChange={handleInputChange} 
+                          placeholder="john.doe@example.com" 
+                          required 
+                          className="border border-[#A0A0A0]/30 text-[#1F1F2A]"
+                        />
                       </div>
                       
                       <div className="space-y-2">
-                        <Label htmlFor="phone">رقم الهاتف * (بالصيغة العراقية، على سبيل المثال، 07XXXXXXXXXXXXXXX)</Label>
-                        <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleInputChange} placeholder="07XXXXXXXXX" required />
-                        <p className="text-xs text-gray-500">يجب ان يبدأ الرقم ب 07 و متكون من 11 رقم</p>
+                        <Label htmlFor="phone" className="text-[#1F1F2A]">رقم الهاتف * (بالصيغة العراقية، على سبيل المثال، 07XXXXXXXXXXXXXXX)</Label>
+                        <Input 
+                          id="phone" 
+                          name="phone" 
+                          type="tel" 
+                          value={formData.phone} 
+                          onChange={handleInputChange} 
+                          placeholder="07XXXXXXXXX" 
+                          required 
+                          className="border border-[#A0A0A0]/30 text-[#1F1F2A]"
+                        />
+                        <p className="text-xs text-[#A0A0A0]">يجب ان يبدأ الرقم ب 07 و متكون من 11 رقم</p>
                       </div>
                     </div>}
                   
                   {/* Step 2: Shipping Information */}
                   {currentStep === 2 && <div className="space-y-4">
                       <div className="space-y-2">
-                        <Label htmlFor="address">عنوان الشارع والحي *</Label>
-                        <Input id="address" name="address" value={formData.address} onChange={handleInputChange} placeholder="اسم الشارع، رقم المبنى، إلخ." required />
+                        <Label htmlFor="address" className="text-[#1F1F2A]">عنوان الشارع والحي *</Label>
+                        <Input 
+                          id="address" 
+                          name="address" 
+                          value={formData.address} 
+                          onChange={handleInputChange} 
+                          placeholder="اسم الشارع، رقم المبنى، إلخ." 
+                          required 
+                          className="border border-[#A0A0A0]/30 text-[#1F1F2A]"
+                        />
                       </div>
                       
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="governorate">المحافطة *</Label>
+                          <Label htmlFor="governorate" className="text-[#1F1F2A]">المحافطة *</Label>
                           <Select value={formData.governorate} onValueChange={value => handleSelectChange('governorate', value)}>
-                            <SelectTrigger id="governorate">
+                            <SelectTrigger id="governorate" className="border border-[#A0A0A0]/30 text-[#1F1F2A]">
                               <SelectValue placeholder="اختر المحافظة" />
                             </SelectTrigger>
-                            <SelectContent>
-                              {iraqGovernorates.map(governorate => <SelectItem key={governorate} value={governorate}>
+                            <SelectContent className="bg-[#FFFFFF] border border-[#A0A0A0]/30">
+                              {iraqGovernorates.map(governorate => <SelectItem 
+                                  key={governorate} 
+                                  value={governorate}
+                                  className="text-[#1F1F2A] hover:bg-[#1F1F2A]/5"
+                                >
                                   {governorate}
                                 </SelectItem>)}
                             </SelectContent>
@@ -322,13 +368,17 @@ const Checkout: React.FC = () => {
                         </div>
                         
                         <div className="space-y-2">
-                          <Label htmlFor="district">اقرب منطقة لك *</Label>
+                          <Label htmlFor="district" className="text-[#1F1F2A]">اقرب منطقة لك *</Label>
                           <Select value={formData.district} onValueChange={value => handleSelectChange('district', value)} disabled={!formData.governorate}>
-                            <SelectTrigger id="district">
+                            <SelectTrigger id="district" className="border border-[#A0A0A0]/30 text-[#1F1F2A]">
                               <SelectValue placeholder={formData.governorate ? "حدد اقرب منطقة" : "حدد المحافظة اولا"} />
                             </SelectTrigger>
-                            <SelectContent>
-                              {availableDistricts.map(district => <SelectItem key={district} value={district}>
+                            <SelectContent className="bg-[#FFFFFF] border border-[#A0A0A0]/30">
+                              {availableDistricts.map(district => <SelectItem 
+                                  key={district} 
+                                  value={district}
+                                  className="text-[#1F1F2A] hover:bg-[#1F1F2A]/5"
+                                >
                                   {district}
                                 </SelectItem>)}
                             </SelectContent>
@@ -337,16 +387,23 @@ const Checkout: React.FC = () => {
                       </div>
                       
                       <div className="space-y-2">
-                        <Label htmlFor="notes">ملاحظات (يمكن ترك الحقل فارغ </Label>
-                        <Input id="notes" name="notes" value={formData.notes} onChange={handleInputChange} placeholder="تعليمات التسليم، والمعالم، وما إلى ذلك." />
+                        <Label htmlFor="notes" className="text-[#1F1F2A]">ملاحظات (يمكن ترك الحقل فارغ </Label>
+                        <Input 
+                          id="notes" 
+                          name="notes" 
+                          value={formData.notes} 
+                          onChange={handleInputChange} 
+                          placeholder="تعليمات التسليم، والمعالم، وما إلى ذلك." 
+                          className="border border-[#A0A0A0]/30 text-[#1F1F2A]"
+                        />
                       </div>
                       
-                      <div className="bg-amber-50 p-4 rounded-md border border-amber-200 mt-6">
+                      <div className="bg-[#D13B28]/10 p-4 rounded-md border border-[#D13B28]/30 mt-6">
                         <div className="flex items-start">
-                          <Truck className="h-5 w-5 text-amber-500 mt-0.5 mr-2 flex-shrink-0" />
+                          <Truck className="h-5 w-5 text-[#D13B28] mt-0.5 mr-2 flex-shrink-0" />
                           <div>
-                            <h4 className="font-medium text-amber-800">طريقة الدفع</h4>
-                            <p className="text-sm text-amber-700">
+                            <h4 className="font-medium text-[#D13B28]">طريقة الدفع</h4>
+                            <p className="text-sm text-[#D13B28]">
                               الدفع نقداً عند الاستلام فقط. ستدفع عند وصول طلبك.
                             </p>
                           </div>
@@ -357,19 +414,19 @@ const Checkout: React.FC = () => {
                   {/* Step 3: Review Order */}
                   {currentStep === 3 && <div className="space-y-6">
                       <div>
-                        <h3 className="font-medium text-lg">معلومات العميل</h3>
-                        <div className="mt-2 text-sm">
+                        <h3 className="font-medium text-lg text-[#1F1F2A]">معلومات العميل</h3>
+                        <div className="mt-2 text-sm text-[#1F1F2A]">
                           <p>{formData.firstName} {formData.lastName}</p>
                           <p>{formData.email}</p>
                           <p>{formData.phone}</p>
                         </div>
                       </div>
                       
-                      <Separator />
+                      <Separator className="bg-[#A0A0A0]/30" />
                       
                       <div>
-                        <h3 className="font-medium text-lg">عنوان الشحن</h3>
-                        <div className="mt-2 text-sm">
+                        <h3 className="font-medium text-lg text-[#1F1F2A]">عنوان الشحن</h3>
+                        <div className="mt-2 text-sm text-[#1F1F2A]">
                           <p>{formData.address}</p>
                           <p>{formData.district}, {formData.governorate}</p>
                           <p>Iraq</p>
@@ -380,42 +437,41 @@ const Checkout: React.FC = () => {
                         </div>
                       </div>
                       
-                      <Separator />
+                      <Separator className="bg-[#A0A0A0]/30" />
                       
                       <div>
-                        <h3 className="font-medium text-lg flex items-center">
-                          <Truck className="h-5 w-5 mr-2 text-primary" />
+                        <h3 className="font-medium text-lg flex items-center text-[#1F1F2A]">
+                          <Truck className="h-5 w-5 mr-2 text-[#D13B28]" />
                           طريقة الدفع
                         </h3>
-                        <div className="mt-2 text-sm bg-gray-50 p-3 rounded-md">
-                          <p className="font-medium">الدفع عند الاستلام</p>
-                          <p className="text-gray-600 text-xs mt-1">
+                        <div className="mt-2 text-sm bg-[#1F1F2A]/5 p-3 rounded-md">
+                          <p className="font-medium text-[#1F1F2A]">الدفع عند الاستلام</p>
+                          <p className="text-[#A0A0A0] text-xs mt-1">
 ستدفع عند وصول طلبك. يرجى تجهيز المبلغ بالضبط.
-
                           </p>
                         </div>
                       </div>
                       
-                      <Separator />
+                      <Separator className="bg-[#A0A0A0]/30" />
                       
                       <div>
-                        <h3 className="font-medium text-lg">المنتجات</h3>
+                        <h3 className="font-medium text-lg text-[#1F1F2A]">المنتجات</h3>
                         <ScrollArea className="h-[200px] mt-2">
                           <div className="space-y-4">
                             {cartItems.map(item => <div key={item.product.id} className="flex items-center justify-between">
                                 <div className="flex items-center">
-                                  <div className="w-12 h-12 rounded overflow-hidden">
+                                  <div className="w-12 h-12 rounded overflow-hidden bg-[#1F1F2A]/10">
                                     <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" />
                                   </div>
                                   <div className="ml-3">
-                                    <p className="font-medium">{item.product.name}</p>
-                                    <div className="text-xs text-gray-500">
+                                    <p className="font-medium text-[#1F1F2A]">{item.product.name}</p>
+                                    <div className="text-xs text-[#A0A0A0]">
                                       <span>Qty: {item.quantity}</span>
                                       {item.color && <span className="ml-2">اللون: {item.color}</span>}
                                     </div>
                                   </div>
                                 </div>
-                                <p className="font-medium">${(item.product.price * item.quantity).toFixed(2)}</p>
+                                <p className="font-medium text-[#1F1F2A]">${(item.product.price * item.quantity).toFixed(2)}</p>
                               </div>)}
                           </div>
                         </ScrollArea>
@@ -424,11 +480,24 @@ const Checkout: React.FC = () => {
                 </CardContent>
                 
                 <CardFooter className="flex justify-between">
-                  {currentStep > 1 && <Button variant="outline" onClick={prevStep}>
+                  {currentStep > 1 && <Button 
+                      variant="outline" 
+                      onClick={prevStep}
+                      className="border border-[#A0A0A0]/30 text-[#1F1F2A] hover:bg-[#1F1F2A]/5"
+                    >
                       العودة
                     </Button>}
                   
-                  {currentStep < 3 ? <Button onClick={nextStep} className={currentStep === 1 ? 'w-full' : ''}>التالي</Button> : <Button disabled={isLoading} onClick={placeOrder}>
+                  {currentStep < 3 ? <Button 
+                      onClick={nextStep} 
+                      className={`${currentStep === 1 ? 'w-full' : ''} bg-[#D13B28] hover:bg-[#D13B28]/90`}
+                    >
+                      التالي
+                    </Button> : <Button 
+                      disabled={isLoading} 
+                      onClick={placeOrder}
+                      className="bg-[#D13B28] hover:bg-[#D13B28]/90"
+                    >
                       {isLoading ? <>
                           <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -452,48 +521,48 @@ const Checkout: React.FC = () => {
             duration: 0.3,
             delay: 0.2
           }}>
-              <Card className="sticky top-24">
+              <Card className="sticky top-24 bg-[#FFFFFF] border border-[#A0A0A0]/30">
                 <CardHeader>
-                  <CardTitle>ملخص الطلب</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-[#1F1F2A]">ملخص الطلب</CardTitle>
+                  <CardDescription className="text-[#A0A0A0]">
                     {cartItems.length} {cartItems.length === 1 ? 'منتج' : 'منتجات'} بطلبك
                   </CardDescription>
                 </CardHeader>
                 
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    {cartItems.slice(0, 3).map(item => <div key={item.product.id} className="flex justify-between text-sm">
+                    {cartItems.slice(0, 3).map(item => <div key={item.product.id} className="flex justify-between text-sm text-[#1F1F2A]">
                         <span className="flex-1 truncate">{item.product.name} x{item.quantity}</span>
                         <span className="font-medium">${(item.product.price * item.quantity).toFixed(2)}</span>
                       </div>)}
                     
-                    {cartItems.length > 3 && <div className="text-sm text-gray-500 italic">
+                    {cartItems.length > 3 && <div className="text-sm text-[#A0A0A0] italic">
                         + {cartItems.length - 3} منتجات
                       </div>}
                   </div>
                   
-                  <Separator />
+                  <Separator className="bg-[#A0A0A0]/30" />
                   
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm text-[#1F1F2A]">
                     <span>المجموع الفرعي</span>
                     <span className="font-medium">${cartTotal.toFixed(2)}</span>
                   </div>
                   
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm text-[#1F1F2A]">
                     <span>التوصيل</span>
                     <span className="font-medium">
                       {calculateDeliveryFee() === 0 ? "مجانا" : `$${calculateDeliveryFee().toFixed(2)}`}
                     </span>
                   </div>
                   
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm text-[#1F1F2A]">
                     <span>الاجر (10%)</span>
                     <span className="font-medium">${calculateTax().toFixed(2)}</span>
                   </div>
                   
-                  <Separator />
+                  <Separator className="bg-[#A0A0A0]/30" />
                   
-                  <div className="flex justify-between font-bold">
+                  <div className="flex justify-between font-bold text-[#1F1F2A]">
                     <span>المجموع</span>
                     <span>${calculateTotal().toFixed(2)}</span>
                   </div>
@@ -505,12 +574,12 @@ const Checkout: React.FC = () => {
                     <span>شحن مجاني على الطلبات التي تزيد قيمتها عن 50 دولار</span>
                   </div>
                   
-                  <div className="flex items-center text-sm text-blue-600">
+                  <div className="flex items-center text-sm text-[#1F1F2A]">
                     <Box className="w-4 h-4 mr-2" />
                     <span>الدفع نقداً عند الاستلام في العراق</span>
                   </div>
                   
-                  <div className="flex items-center text-sm text-purple-600">
+                  <div className="flex items-center text-sm text-[#1F1F2A]">
                     <Clock className="w-4 h-4 mr-2" />
                     <span>التوصيل يتم بمدة لاتزيد عن 5 ايام</span>
                   </div>
