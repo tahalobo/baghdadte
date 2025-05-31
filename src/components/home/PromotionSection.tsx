@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -12,11 +11,11 @@ const PromotionSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary via-primary/95 to-primary/90 text-white overflow-hidden relative">
+    <section className="py-20 bg-gradient-to-br from-[#1F1F2A] via-[#1F1F2A]/95 to-[#D13B28] text-white overflow-hidden relative">
       {/* Enhanced decorative elements */}
-      <div className="absolute -top-24 -left-24 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-white/5 rounded-full blur-2xl"></div>
+      <div className="absolute -top-24 -left-24 w-80 h-80 bg-[#D13B28]/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#D13B28]/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-[#D13B28]/15 rounded-full blur-2xl"></div>
       
       <div className="container mx-auto px-4 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -40,7 +39,7 @@ const PromotionSection: React.FC = () => {
               <Button 
                 asChild 
                 variant="secondary"
-                className="bg-white text-primary hover:bg-gray-100 btn-hover-effect text-lg px-6 py-6 h-auto font-medium"
+                className="bg-white text-[#1F1F2A] hover:bg-white/90 btn-hover-effect text-lg px-6 py-6 h-auto font-medium"
                 size="lg"
               >
                 <Link to="/deals">
@@ -69,7 +68,7 @@ const PromotionSection: React.FC = () => {
           >
             <div className="grid grid-cols-2 gap-5">
               <motion.div 
-                className="bg-white/15 backdrop-blur-sm rounded-2xl p-5 rotate-2 cursor-pointer transform transition-all duration-300 hover:rotate-0 hover:scale-105 hover:shadow-xl hover:bg-white/20"
+                className="bg-[#1F1F2A]/40 backdrop-blur-sm rounded-2xl p-5 rotate-2 cursor-pointer transform transition-all duration-300 hover:rotate-0 hover:scale-105 hover:shadow-xl hover:bg-[#1F1F2A]/60"
                 whileHover={{ y: -8 }}
                 onClick={() => handleCardClick("headphones")}
               >
@@ -82,14 +81,14 @@ const PromotionSection: React.FC = () => {
                     <span className="line-through text-white/60">٩٩٫٩٩ د.ع</span>
                     <span className="font-bold text-xl text-white">٤٩٫٩٩ د.ع</span>
                   </div>
-                  <div className="mt-3 bg-white/20 text-white text-xs font-medium py-1 px-2 rounded-full inline-block">
+                  <div className="mt-3 bg-[#D13B28] text-white text-xs font-medium py-1 px-2 rounded-full inline-block">
                     خصم 50%
                   </div>
                 </div>
               </motion.div>
               
               <motion.div 
-                className="bg-white/15 backdrop-blur-sm rounded-2xl p-5 -rotate-2 mt-8 cursor-pointer transform transition-all duration-300 hover:rotate-0 hover:scale-105 hover:shadow-xl hover:bg-white/20"
+                className="bg-[#1F1F2A]/40 backdrop-blur-sm rounded-2xl p-5 -rotate-2 mt-8 cursor-pointer transform transition-all duration-300 hover:rotate-0 hover:scale-105 hover:shadow-xl hover:bg-[#1F1F2A]/60"
                 whileHover={{ y: -8 }}
                 onClick={() => handleCardClick("chargers")}
               >
@@ -102,7 +101,7 @@ const PromotionSection: React.FC = () => {
                     <span className="line-through text-white/60">٣٩٫٩٩ د.ع</span>
                     <span className="font-bold text-xl text-white">٢٤٫٩٩ د.ع</span>
                   </div>
-                  <div className="mt-3 bg-white/20 text-white text-xs font-medium py-1 px-2 rounded-full inline-block">
+                  <div className="mt-3 bg-[#D13B28] text-white text-xs font-medium py-1 px-2 rounded-full inline-block">
                     خصم 37%
                   </div>
                 </div>
