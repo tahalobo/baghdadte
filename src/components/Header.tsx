@@ -41,7 +41,7 @@ const Header: React.FC = () => {
     setIsSearchOpen(false);
   };
   const Logo = <Link to="/" className="flex items-center gap-2">
-      <span className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">متجر zmc</span>
+      <span className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">متجر تل بغداد</span>
     </Link>;
   return <header className={cn("fixed top-0 inset-x-0 z-40 transition-all duration-300 backdrop-blur-lg", isScrolled ? "py-3 bg-white/90 shadow-sm" : "py-5 bg-white/50")}>
       <div className="container flex flex-col px-4 mx-auto">
