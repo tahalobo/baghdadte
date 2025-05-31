@@ -18,13 +18,13 @@ const contactInfo = {
     mapUrl: "https://maps.google.com/?q=14+Ramadan+Street+Baghdad+Iraq"
   },
   phone: {
-    sales: "0780 722 2333",
-    support: "0780 722 2333"
+    sales: "0773 631 7779",
+    support: "0773 631 7779"
   },
   email: {
-    general: "Suhah08@gmail.com",
-    support: "Suhah08@gmail.com",
-    sales: "Suhah08@gmail.com",
+    general: "telbaghdad5@gmail.com",
+    support: "telbaghdad5@gmail.com",
+    sales: "telbaghdad5@gmail.com",
   },
   social: {
     facebook: "https://facebook.com/mystore.iraq",
