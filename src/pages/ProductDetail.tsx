@@ -148,12 +148,12 @@ const ProductDetail = () => {
   const discountedPrice = product.discount ? product.price * (1 - product.discount / 100) : product.price;
   const estimatedDelivery = new Date();
   estimatedDelivery.setDate(estimatedDelivery.getDate() + 3);
-  return <div className="min-h-screen bg-[#1F1F2A]">
+  return <div className="min-h-screen bg-[#FFFFFF]">
       <Header />
       
       <main className="container mx-auto py-8 px-4 mt-24">
         {/* Breadcrumbs */}
-        <nav className="flex py-3 text-sm text-[#A0A0A0]">
+        <nav className="flex py-3 text-sm">
           <ol className="inline-flex items-center space-x-1 md:space-x-3 rtl:space-x-reverse">
             <li className="inline-flex items-center">
               <Link to="/" className="text-[#A0A0A0] hover:text-[#D13B28] inline-flex items-center">
@@ -186,14 +186,14 @@ const ProductDetail = () => {
                 <svg className="w-3 h-3 text-[#A0A0A0] mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span className="text-[#FFFFFF] ms-1 md:ms-2 font-medium">{product.name}</span>
+                <span className="text-[#1F1F2A] ms-1 md:ms-2 font-medium">{product.name}</span>
               </div>
             </li>
           </ol>
         </nav>
 
         {/* Product Details Section */}
-        <div className="bg-[#1F1F2A] rounded-xl shadow-sm overflow-hidden p-4 md:p-8 mb-8">
+        <div className="bg-[#FFFFFF] rounded-xl shadow-sm overflow-hidden p-4 md:p-8 mb-8 border border-[#A0A0A0]/30">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Product Images */}
             <motion.div initial={{
@@ -206,7 +206,7 @@ const ProductDetail = () => {
             duration: 0.5
           }} className="space-y-4">
               {/* Main Image */}
-              <div className="relative aspect-square overflow-hidden rounded-lg bg-[#1F1F2A] cursor-zoom-in" onMouseMove={handleImageZoom} onMouseEnter={() => setIsZoomed(true)} onMouseLeave={() => setIsZoomed(false)} onClick={() => setIsZoomed(!isZoomed)}>
+              <div className="relative aspect-square overflow-hidden rounded-lg bg-[#FFFFFF] cursor-zoom-in" onMouseMove={handleImageZoom} onMouseEnter={() => setIsZoomed(true)} onMouseLeave={() => setIsZoomed(false)} onClick={() => setIsZoomed(!isZoomed)}>
                 <div className={`w-full h-full transition-all duration-200 ${isZoomed ? 'scale-150' : 'scale-100'}`} style={isZoomed ? {
                 transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`
               } : undefined}>
@@ -214,26 +214,26 @@ const ProductDetail = () => {
                 </div>
                 
                 {product.discount > 0 && <div className="absolute top-4 right-4">
-                    <Badge className="bg-[#D13B28] text-white rounded-full px-3 py-1.5 text-sm font-medium animate-pulse">
+                    <Badge className="rounded-full px-3 py-1.5 text-sm font-medium animate-pulse bg-[#D13B28]">
                       خصم {product.discount}%
                     </Badge>
                   </div>}
                 
                 {product.newArrival && <div className="absolute top-4 left-4">
-                    <Badge className="bg-[#D13B28] text-white hover:bg-[#D13B28]/90 rounded-full px-3 py-1.5 text-sm font-medium">
+                    <Badge className="bg-emerald-500 text-white hover:bg-emerald-600 rounded-full px-3 py-1.5 text-sm font-medium">
                       جديد
                     </Badge>
                   </div>}
 
                 {product.bestSeller && <div className="absolute bottom-4 left-4">
-                    <Badge className="bg-[#D13B28] hover:bg-[#D13B28]/90 text-white rounded-full px-3 py-1.5 text-sm font-medium">
+                    <Badge className="bg-amber-500 hover:bg-amber-600 text-white rounded-full px-3 py-1.5 text-sm font-medium">
                       <Award className="w-4 h-4 mr-1" />
                       الأكثر مبيعاً
                     </Badge>
                   </div>}
 
                 {/* Image zoom instructions */}
-                <div className="absolute bottom-4 right-4 bg-black/60 text-white px-2 py-1 rounded-md text-xs flex items-center">
+                <div className="absolute bottom-4 right-4 bg-[#1F1F2A]/80 text-white px-2 py-1 rounded-md text-xs flex items-center">
                   <Plus className="h-3 w-3 mr-1" />
                   اضغط للتكبير
                 </div>
@@ -243,28 +243,28 @@ const ProductDetail = () => {
               <div className="grid grid-cols-4 gap-2">
                 {productImages.map((img, index) => <motion.div key={index} whileHover={{
                 scale: 1.05
-              }} onClick={() => setSelectedImage(index)} className={`cursor-pointer aspect-square rounded-md overflow-hidden border-2 transition-all ${selectedImage === index ? 'border-[#D13B28] ring-2 ring-[#D13B28]/20' : 'border-[#A0A0A0]'}`}>
+              }} onClick={() => setSelectedImage(index)} className={`cursor-pointer aspect-square rounded-md overflow-hidden border-2 transition-all ${selectedImage === index ? 'border-[#D13B28] ring-2 ring-[#D13B28]/20' : 'border-transparent'}`}>
                     <img src={img} alt={`${product.name} - صورة ${index + 1}`} className="w-full h-full object-cover" />
                   </motion.div>)}
               </div>
               
               {/* Product Features */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-4 border-t border-[#A0A0A0]">
-                <div className="flex flex-col items-center justify-center bg-[#1F1F2A] p-3 rounded-lg">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-4 border-t border-[#A0A0A0]/30">
+                <div className="flex flex-col items-center justify-center bg-[#FFFFFF] p-3 rounded-lg border border-[#A0A0A0]/30">
                   <Shield className="h-6 w-6 text-[#D13B28] mb-1" />
-                  <span className="text-xs text-[#FFFFFF] text-center">ضمان لمدة عام</span>
+                  <span className="text-xs text-[#1F1F2A] text-center">ضمان لمدة عام</span>
                 </div>
-                <div className="flex flex-col items-center justify-center bg-[#1F1F2A] p-3 rounded-lg">
+                <div className="flex flex-col items-center justify-center bg-[#FFFFFF] p-3 rounded-lg border border-[#A0A0A0]/30">
                   <Truck className="h-6 w-6 text-[#D13B28] mb-1" />
-                  <span className="text-xs text-[#FFFFFF] text-center">شحن مجاني</span>
+                  <span className="text-xs text-[#1F1F2A] text-center">شحن مجاني</span>
                 </div>
-                <div className="flex flex-col items-center justify-center bg-[#1F1F2A] p-3 rounded-lg">
+                <div className="flex flex-col items-center justify-center bg-[#FFFFFF] p-3 rounded-lg border border-[#A0A0A0]/30">
                   <Package className="h-6 w-6 text-[#D13B28] mb-1" />
-                  <span className="text-xs text-[#FFFFFF] text-center">منتج أصلي</span>
+                  <span className="text-xs text-[#1F1F2A] text-center">منتج أصلي</span>
                 </div>
-                <div className="flex flex-col items-center justify-center bg-[#1F1F2A] p-3 rounded-lg">
+                <div className="flex flex-col items-center justify-center bg-[#FFFFFF] p-3 rounded-lg border border-[#A0A0A0]/30">
                   <RefreshCw className="h-6 w-6 text-[#D13B28] mb-1" />
-                  <span className="text-xs text-[#FFFFFF] text-center">استرجاع مجاني</span>
+                  <span className="text-xs text-[#1F1F2A] text-center">استرجاع مجاني</span>
                 </div>
               </div>
             </motion.div>
@@ -282,21 +282,21 @@ const ProductDetail = () => {
           }} className="space-y-6">
               <div>
                 <div className="flex flex-wrap gap-2 mb-2">
-                  <Badge className="text-[#D13B28] border-[#D13B28]/30">
+                  <Badge variant="outline" className="text-[#1F1F2A] border-[#A0A0A0]/30">
                     {product.category.replace('-', ' ')}
                   </Badge>
-                  {product.bestSeller && <Badge className="bg-[#D13B28] hover:bg-[#D13B28]/90">الأكثر مبيعاً</Badge>}
-                  {product.newArrival && <Badge className="bg-[#D13B28] hover:bg-[#D13B28]/90">جديد</Badge>}
-                  {product.featured && <Badge className="bg-[#D13B28] hover:bg-[#D13B28]/90">منتج مميز</Badge>}
+                  {product.bestSeller && <Badge className="bg-amber-500 hover:bg-amber-600">الأكثر مبيعاً</Badge>}
+                  {product.newArrival && <Badge className="bg-emerald-500 hover:bg-emerald-600">جديد</Badge>}
+                  {product.featured && <Badge className="bg-purple-500 hover:bg-purple-600">منتج مميز</Badge>}
                 </div>
                 
-                <h1 className="text-3xl md:text-4xl font-bold mb-2 text-[#FFFFFF]">{product.name}</h1>
+                <h1 className="text-3xl md:text-4xl font-bold mb-2 text-[#1F1F2A]">{product.name}</h1>
                 
                 
                 
                 <div className="flex items-center mb-4">
-                  <span className="text-xl font-medium text-[#FFFFFF]">ID: {product.id}</span>
-                  <div className="h-4 w-px bg-[#A0A0A0] mx-2"></div>
+                  <span className="text-xl font-medium text-[#1F1F2A]">ID: {product.id}</span>
+                  <div className="h-4 w-px bg-[#A0A0A0]/30 mx-2"></div>
                   <span className="text-sm text-[#A0A0A0]">الباركود: {1000000 + parseInt(product.id)}</span>
                 </div>
                 
@@ -311,7 +311,7 @@ const ProductDetail = () => {
                           {formatPrice(product.price)}
                         </span>
                       </div>
-                      <div className="bg-[#D13B28]/20 text-[#D13B28] px-3 py-1 rounded-lg text-sm font-medium">
+                      <div className="bg-[#D13B28]/10 text-[#D13B28] px-3 py-1 rounded-lg text-sm font-medium">
                         توفير {formatPrice(product.price - discountedPrice)}
                       </div>
                     </> : <span className="text-4xl font-bold text-[#D13B28]">
@@ -319,7 +319,7 @@ const ProductDetail = () => {
                     </span>}
                 </div>
                 
-                <Separator className="my-6 bg-[#A0A0A0]" />
+                <Separator className="my-6 bg-[#A0A0A0]/30" />
                 
                 {/* Stock Status */}
                 {product.stock > 0 ? <div className="text-green-600 flex items-center mb-4">
@@ -332,14 +332,14 @@ const ProductDetail = () => {
                   </div> : <div className="text-[#D13B28] flex items-center mb-4">
                     <div className="w-3 h-3 rounded-full bg-[#D13B28] mr-2"></div>
                     غير متوفر حالياً
-                    <Button variant="link" size="sm" className="mr-2 p-0 text-[#D13B28]">
+                    <Button variant="link" size="sm" className="mr-2 p-0 text-[#1F1F2A]">
                       أشعرني عند التوفر
                     </Button>
                   </div>}
                 
                 {/* Estimated Delivery */}
-                <div className="bg-[#1F1F2A] text-[#FFFFFF] p-3 rounded-lg flex items-start mb-6 border border-[#A0A0A0]">
-                  <Truck className="h-5 w-5 mr-2 flex-shrink-0 mt-0.5 text-[#D13B28]" />
+                <div className="bg-[#1F1F2A]/10 text-[#1F1F2A] p-3 rounded-lg flex items-start mb-6">
+                  <Truck className="h-5 w-5 mr-2 flex-shrink-0 mt-0.5 text-[#1F1F2A]" />
                   <div>
                     <p className="font-medium">التوصيل السريع</p>
                     <p className="text-sm">اطلب الآن للحصول عليه بحلول {estimatedDelivery.toLocaleDateString('ar-IQ')}</p>
@@ -348,12 +348,12 @@ const ProductDetail = () => {
                 
                 {/* Add to Cart */}
                 <div className="flex flex-wrap gap-4 mb-6">
-                  <div className="flex items-center border border-[#A0A0A0] rounded-lg bg-[#1F1F2A]">
-                    <button className="px-4 py-3 text-[#FFFFFF] transition-colors hover:text-[#D13B28] hover:bg-[#1F1F2A]" onClick={() => handleQuantityChange(-1)} disabled={quantity <= 1}>
+                  <div className="flex items-center border border-[#A0A0A0]/30 rounded-lg bg-[#FFFFFF]">
+                    <button className="px-4 py-3 text-[#1F1F2A] transition-colors hover:text-[#D13B28] hover:bg-[#1F1F2A]/5" onClick={() => handleQuantityChange(-1)} disabled={quantity <= 1}>
                       <Minus className="h-4 w-4" />
                     </button>
-                    <span className="px-4 py-3 font-medium text-lg min-w-[3rem] text-center text-[#FFFFFF]">{quantity}</span>
-                    <button className="px-4 py-3 text-[#FFFFFF] transition-colors hover:text-[#D13B28] hover:bg-[#1F1F2A]" onClick={() => handleQuantityChange(1)} disabled={quantity >= product.stock}>
+                    <span className="px-4 py-3 font-medium text-lg min-w-[3rem] text-center text-[#1F1F2A]">{quantity}</span>
+                    <button className="px-4 py-3 text-[#1F1F2A] transition-colors hover:text-[#D13B28] hover:bg-[#1F1F2A]/5" onClick={() => handleQuantityChange(1)} disabled={quantity >= product.stock}>
                       <Plus className="h-4 w-4" />
                     </button>
                   </div>
@@ -366,12 +366,12 @@ const ProductDetail = () => {
                 
                 {/* Quick Actions */}
                 <div className="flex gap-2 mb-6">
-                  <Button variant="outline" size="lg" className={cn("flex-1 border-[#A0A0A0] text-[#FFFFFF]", isInWishlist(product.id) && "bg-[#D13B28]/10 border-[#D13B28] text-[#D13B28] hover:bg-[#D13B28]/20 hover:text-[#D13B28]")} onClick={toggleWishlist}>
-                    <Heart className={cn("mr-2 h-5 w-5", isInWishlist(product.id) ? "text-[#D13B28] fill-[#D13B28]" : "text-[#FFFFFF]")} />
+                  <Button variant="outline" size="lg" className={cn("flex-1 border-[#A0A0A0]/30 text-[#1F1F2A] hover:bg-[#1F1F2A]/5", isInWishlist(product.id) && "bg-red-50 border-red-200 text-red-600 hover:bg-red-100 hover:text-red-700")} onClick={toggleWishlist}>
+                    <Heart className={cn("mr-2 h-5 w-5", isInWishlist(product.id) && "fill-current")} />
                     {isInWishlist(product.id) ? "في قائمة الرغبات" : "أضف للمفضلة"}
                   </Button>
                   
-                  <Button variant="outline" size="icon" className="h-[52px] w-[52px] border-[#A0A0A0] text-[#FFFFFF]" onClick={shareProduct}>
+                  <Button variant="outline" size="icon" className="h-[52px] w-[52px] border-[#A0A0A0]/30 text-[#1F1F2A] hover:bg-[#1F1F2A]/5" onClick={shareProduct}>
                     <Share2 className="h-5 w-5" />
                   </Button>
                 </div>
@@ -379,7 +379,7 @@ const ProductDetail = () => {
                 {/* Product Highlights */}
                 <div className="space-y-2">
                   
-                  <ul className="space-y-1 text-[#FFFFFF]">
+                  <ul className="space-y-1">
                     
                     
                     
@@ -401,56 +401,56 @@ const ProductDetail = () => {
       }} transition={{
         duration: 0.5,
         delay: 0.4
-      }} className="mb-12 bg-[#1F1F2A] rounded-xl shadow-sm overflow-hidden">
+      }} className="mb-12 bg-[#FFFFFF] rounded-xl shadow-sm overflow-hidden border border-[#A0A0A0]/30">
           <Tabs defaultValue="details" value={activeTab} onValueChange={setActiveTab}>
-            <div className="border-b border-[#A0A0A0]">
-              <TabsList className="w-full justify-start overflow-x-auto flex-nowrap px-4 h-16 bg-[#1F1F2A]">
-                <TabsTrigger value="details" className="px-8 text-[#FFFFFF] data-[state=active]:text-[#D13B28] data-[state=active]:border-b-2 data-[state=active]:border-[#D13B28]">المواصفات</TabsTrigger>
+            <div className="border-b border-[#A0A0A0]/30">
+              <TabsList className="w-full justify-start overflow-x-auto flex-nowrap px-4 h-16 bg-[#FFFFFF]">
+                <TabsTrigger value="details" className="px-8 text-[#1F1F2A] data-[state=active]:text-[#D13B28] data-[state=active]:border-b-2 data-[state=active]:border-[#D13B28]">المواصفات</TabsTrigger>
                 
-                <TabsTrigger value="shipping" className="px-8 text-[#FFFFFF] data-[state=active]:text-[#D13B28] data-[state=active]:border-b-2 data-[state=active]:border-[#D13B28]">الشحن والإرجاع</TabsTrigger>
-                <TabsTrigger value="faq" className="px-8 text-[#FFFFFF] data-[state=active]:text-[#D13B28] data-[state=active]:border-b-2 data-[state=active]:border-[#D13B28]">الأسئلة الشائعة</TabsTrigger>
+                <TabsTrigger value="shipping" className="px-8 text-[#1F1F2A] data-[state=active]:text-[#D13B28] data-[state=active]:border-b-2 data-[state=active]:border-[#D13B28]">الشحن والإرجاع</TabsTrigger>
+                <TabsTrigger value="faq" className="px-8 text-[#1F1F2A] data-[state=active]:text-[#D13B28] data-[state=active]:border-b-2 data-[state=active]:border-[#D13B28]">الأسئلة الشائعة</TabsTrigger>
               </TabsList>
             </div>
             
             <TabsContent value="details" className="p-6 md:p-8">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold mb-4 text-[#FFFFFF]">المواصفات التقنية</h3>
+                  <h3 className="text-xl font-bold mb-4 text-[#1F1F2A]">المواصفات التقنية</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-[#1F1F2A] p-4 rounded-lg border border-[#A0A0A0]">
+                    <div className="bg-[#FFFFFF] p-4 rounded-lg border border-[#A0A0A0]/30">
                       <h4 className="font-medium mb-3 text-[#D13B28]">الأبعاد والوزن</h4>
-                      <ul className="space-y-3 text-[#FFFFFF]">
-                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0] pb-2">
+                      <ul className="space-y-3 text-[#1F1F2A]">
+                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0]/30 pb-2">
                           <span className="text-[#A0A0A0]">الأبعاد:</span>
                           <span className="font-medium">15 × 10 × 5 سم</span>
                         </li>
-                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0] pb-2">
+                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0]/30 pb-2">
                           <span className="text-[#A0A0A0]">الوزن:</span>
                           <span className="font-medium">350 جرام</span>
                         </li>
-                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0] pb-2">
+                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0]/30 pb-2">
                           <span className="text-[#A0A0A0]">الحجم الصافي:</span>
                           <span className="font-medium">750 مل</span>
                         </li>
                       </ul>
                     </div>
                     
-                    <div className="bg-[#1F1F2A] p-4 rounded-lg border border-[#A0A0A0]">
+                    <div className="bg-[#FFFFFF] p-4 rounded-lg border border-[#A0A0A0]/30">
                       <h4 className="font-medium mb-3 text-[#D13B28]">المواصفات العامة</h4>
-                      <ul className="space-y-3 text-[#FFFFFF]">
-                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0] pb-2">
+                      <ul className="space-y-3 text-[#1F1F2A]">
+                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0]/30 pb-2">
                           <span className="text-[#A0A0A0]">بلد المنشأ:</span>
                           <span className="font-medium">اليابان</span>
                         </li>
-                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0] pb-2">
+                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0]/30 pb-2">
                           <span className="text-[#A0A0A0]">اللون:</span>
                           <span className="font-medium">أسود / فضي</span>
                         </li>
-                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0] pb-2">
+                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0]/30 pb-2">
                           <span className="text-[#A0A0A0]">المواد:</span>
                           <span className="font-medium">بلاستيك، معدن، سيليكون</span>
                         </li>
-                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0] pb-2">
+                        <li className="flex justify-between border-b border-dashed border-[#A0A0A0]/30 pb-2">
                           <span className="text-[#A0A0A0]">الضمان:</span>
                           <span className="font-medium">12 شهر</span>
                         </li>
@@ -470,8 +470,8 @@ const ProductDetail = () => {
                 </div>
                 
                 <div className="mt-8">
-                  <h3 className="text-xl font-bold mb-4 text-[#FFFFFF]">وصف المنتج</h3>
-                  <div className="prose max-w-none text-[#A0A0A0]">
+                  <h3 className="text-xl font-bold mb-4 text-[#1F1F2A]">وصف المنتج</h3>
+                  <div className="prose max-w-none text-[#1F1F2A]">
                     <p>
                       {product.description || `${product.name} هو منتج عالي الجودة يتميز بتصميم عصري وأداء ممتاز. تم تصنيعه باستخدام مواد متينة مختارة بعناية لضمان المتانة والاستخدام طويل الأمد.`}
                     </p>
@@ -492,7 +492,7 @@ const ProductDetail = () => {
             <TabsContent value="reviews" className="p-6 md:p-8">
               <div className="space-y-6">
                 <div className="flex flex-col md:flex-row md:items-start gap-8">
-                  <div className="md:w-1/3 bg-[#1F1F2A] p-6 rounded-xl border border-[#A0A0A0]">
+                  <div className="md:w-1/3 bg-[#FFFFFF] p-6 rounded-xl border border-[#A0A0A0]/30">
                     <div className="text-center">
                       <div className="text-5xl font-bold text-[#D13B28]">{product.rating.toFixed(1)}</div>
                       <div className="flex justify-center mt-2">
@@ -502,20 +502,20 @@ const ProductDetail = () => {
                         بناءً على {Math.floor(Math.random() * 50) + 10} تقييم
                       </p>
                       
-                      <Separator className="my-4 bg-[#A0A0A0]" />
+                      <Separator className="my-4 bg-[#A0A0A0]/30" />
                       
                       <div className="space-y-3">
                         {[5, 4, 3, 2, 1].map(rating => {
                         const percentage = rating === 5 ? 70 : rating === 4 ? 20 : rating === 3 ? 7 : rating === 2 ? 2 : 1;
                         return <div key={rating} className="flex items-center">
-                              <span className="text-sm mr-2 text-[#FFFFFF]">{rating}</span>
+                              <span className="text-sm mr-2 text-[#1F1F2A]">{rating}</span>
                               <Star className="h-4 w-4 text-amber-400 fill-amber-400 mr-2" />
-                              <div className="flex-grow h-2 bg-[#1F1F2A] rounded-full overflow-hidden border border-[#A0A0A0]">
+                              <div className="flex-grow h-2 bg-[#A0A0A0]/20 rounded-full overflow-hidden">
                                 <div className="h-full bg-amber-400 rounded-full" style={{
                               width: `${percentage}%`
                             }}></div>
                               </div>
-                              <span className="text-sm ml-2 text-[#A0A0A0] w-8">{percentage}%</span>
+                              <span className="text-sm ml-2 text-[#1F1F2A] w-8">{percentage}%</span>
                             </div>;
                       })}
                       </div>
@@ -527,17 +527,17 @@ const ProductDetail = () => {
                   </div>
                   
                   <div className="md:w-2/3">
-                    <h3 className="text-xl font-bold mb-4 text-[#FFFFFF]">آراء العملاء</h3>
+                    <h3 className="text-xl font-bold mb-4 text-[#1F1F2A]">آراء العملاء</h3>
                     
                     <div className="space-y-6">
-                      {[...Array(3)].map((_, i) => <div key={i} className="border-b border-[#A0A0A0] pb-6 last:border-0">
+                      {[...Array(3)].map((_, i) => <div key={i} className="border-b border-[#A0A0A0]/30 pb-6 last:border-0">
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center">
-                              <div className="h-10 w-10 rounded-full bg-[#1F1F2A] overflow-hidden flex items-center justify-center text-[#FFFFFF] font-medium">
+                              <div className="h-10 w-10 rounded-full bg-[#1F1F2A]/10 overflow-hidden flex items-center justify-center text-[#1F1F2A] font-medium">
                                 {["أ", "س", "ف"][i]}
                               </div>
                               <div className="ml-3">
-                                <div className="font-medium text-[#FFFFFF]">
+                                <div className="font-medium text-[#1F1F2A]">
                                   {["أحمد محمد", "سارة علي", "فهد العتيبي"][i]}
                                 </div>
                                 <div className="text-[#A0A0A0] text-sm">
@@ -554,36 +554,36 @@ const ProductDetail = () => {
                             {[...Array(5)].map((_, j) => <Star key={j} className={`h-4 w-4 ${j < [5, 4, 5][i] ? 'text-amber-400 fill-amber-400' : 'text-[#A0A0A0]'}`} />)}
                           </div>
                           
-                          <h4 className="font-medium mb-2 text-[#FFFFFF]">
+                          <h4 className="font-medium mb-2 text-[#1F1F2A]">
                             {["منتج رائع لا يفوت", "جودة ممتازة مقابل السعر", "سعيد جداً بالشراء"][i]}
                           </h4>
                           
-                          <p className="text-[#A0A0A0]">
+                          <p className="text-[#1F1F2A]">
                             {["منتج رائع جداً، أنا سعيد جداً بالشراء. الجودة ممتازة والتوصيل كان سريع. أنصح به بشدة لمن يبحث عن منتج موثوق.", "تجربة شراء ممتازة، المنتج كما هو موصوف تماماً. السعر معقول جداً مقارنة بالجودة العالية، أنصح به بشدة.", "منتج ممتاز بجودة عالية ويستحق السعر. التوصيل كان سريعا والتغليف ممتاز. سأشتري منه مرة أخرى بالتأكيد."][i]}
                           </p>
                           
                           {i === 0 && <div className="mt-3 flex gap-2">
-                              <div className="h-16 w-16 rounded-md overflow-hidden border border-[#A0A0A0]">
+                              <div className="h-16 w-16 rounded-md overflow-hidden border border-[#A0A0A0]/30">
                                 <img src={productImages[1]} alt="User review" className="h-full w-full object-cover" />
                               </div>
-                              <div className="h-16 w-16 rounded-md overflow-hidden border border-[#A0A0A0]">
+                              <div className="h-16 w-16 rounded-md overflow-hidden border border-[#A0A0A0]/30">
                                 <img src={productImages[2]} alt="User review" className="h-full w-full object-cover" />
                               </div>
                             </div>}
                           
                           <div className="mt-3 flex text-sm">
                             <span className="text-[#A0A0A0]">هل كان هذا التقييم مفيداً؟</span>
-                            <Button variant="ghost" size="sm" className="h-auto p-1 ml-2 text-[#FFFFFF]">
+                            <Button variant="ghost" size="sm" className="h-auto p-1 ml-2 text-[#1F1F2A]">
                               نعم
                             </Button>
-                            <Button variant="ghost" size="sm" className="h-auto p-1 ml-2 text-[#FFFFFF]">
+                            <Button variant="ghost" size="sm" className="h-auto p-1 ml-2 text-[#1F1F2A]">
                               لا
                             </Button>
                           </div>
                         </div>)}
                     </div>
                     
-                    <Button variant="outline" className="w-full mt-6 border-[#A0A0A0] text-[#FFFFFF] hover:bg-[#1F1F2A]">
+                    <Button variant="outline" className="w-full mt-6 border-[#A0A0A0]/30 text-[#1F1F2A] hover:bg-[#1F1F2A]/5">
                       عرض كل التقييمات
                     </Button>
                   </div>
@@ -595,12 +595,12 @@ const ProductDetail = () => {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-4">
-                    <div className="bg-[#1F1F2A] p-5 rounded-xl border border-[#A0A0A0]">
+                    <div className="bg-[#FFFFFF] p-5 rounded-xl border border-[#A0A0A0]/30">
                       <h4 className="font-medium text-lg flex items-center text-[#D13B28] mb-4">
-                        <Truck className="mr-2 h-5 w-5 text-[#D13B28]" />
+                        <Truck className="mr-2 h-5 w-5" />
                         الشحن
                       </h4>
-                      <ul className="space-y-3 text-[#FFFFFF]">
+                      <ul className="space-y-3 text-[#1F1F2A]">
                         <li className="flex items-start">
                           <Check className="mr-2 h-5 w-5 text-green-500 flex-shrink-0" />
                           <span>شحن مجاني لجميع الطلبات فوق 50,000 د.ع</span>
@@ -623,44 +623,44 @@ const ProductDetail = () => {
                         </li>
                       </ul>
                       
-                      <p className="mt-4 bg-[#1F1F2A] text-[#FFFFFF] p-3 rounded-lg text-sm border border-[#A0A0A0]">
+                      <p className="mt-4 bg-[#1F1F2A]/10 text-[#1F1F2A] p-3 rounded-lg text-sm">
                         نعمل مع أفضل شركات الشحن المحلية لضمان وصول منتجك بأمان وفي أسرع وقت
                       </p>
                     </div>
                     
-                    <div className="bg-[#1F1F2A] p-5 rounded-xl border border-[#A0A0A0]">
+                    <div className="bg-[#FFFFFF] p-5 rounded-xl border border-[#A0A0A0]/30">
                       <h4 className="font-medium text-lg flex items-center text-[#D13B28] mb-4">
-                        <Clock className="mr-2 h-5 w-5 text-[#D13B28]" />
+                        <Clock className="mr-2 h-5 w-5" />
                         مواعيد التوصيل
                       </h4>
                       <div className="space-y-2">
-                        <div className="flex justify-between py-2 border-b border-dashed border-[#A0A0A0]">
-                          <span className="text-[#FFFFFF]">بغداد</span>
-                          <span className="font-medium text-[#FFFFFF]">1-3 أيام</span>
+                        <div className="flex justify-between py-2 border-b border-dashed border-[#A0A0A0]/30">
+                          <span className="text-[#1F1F2A]">بغداد</span>
+                          <span className="font-medium text-[#1F1F2A]">1-3 أيام</span>
                         </div>
-                        <div className="flex justify-between py-2 border-b border-dashed border-[#A0A0A0]">
-                          <span className="text-[#FFFFFF]">أربيل</span>
-                          <span className="font-medium text-[#FFFFFF]">2-4 أيام</span>
+                        <div className="flex justify-between py-2 border-b border-dashed border-[#A0A0A0]/30">
+                          <span className="text-[#1F1F2A]">أربيل</span>
+                          <span className="font-medium text-[#1F1F2A]">2-4 أيام</span>
                         </div>
-                        <div className="flex justify-between py-2 border-b border-dashed border-[#A0A0A0]">
-                          <span className="text-[#FFFFFF]">البصرة</span>
-                          <span className="font-medium text-[#FFFFFF]">3-5 أيام</span>
+                        <div className="flex justify-between py-2 border-b border-dashed border-[#A0A0A0]/30">
+                          <span className="text-[#1F1F2A]">البصرة</span>
+                          <span className="font-medium text-[#1F1F2A]">3-5 أيام</span>
                         </div>
-                        <div className="flex justify-between py-2 border-b border-dashed border-[#A0A0A0]">
-                          <span className="text-[#FFFFFF]">مناطق أخرى</span>
-                          <span className="font-medium text-[#FFFFFF]">4-7 أيام</span>
+                        <div className="flex justify-between py-2 border-b border-dashed border-[#A0A0A0]/30">
+                          <span className="text-[#1F1F2A]">مناطق أخرى</span>
+                          <span className="font-medium text-[#1F1F2A]">4-7 أيام</span>
                         </div>
                       </div>
                     </div>
                   </div>
                   
                   <div className="space-y-4">
-                    <div className="bg-[#1F1F2A] p-5 rounded-xl border border-[#A0A0A0]">
+                    <div className="bg-[#FFFFFF] p-5 rounded-xl border border-[#A0A0A0]/30">
                       <h4 className="font-medium text-lg flex items-center text-[#D13B28] mb-4">
-                        <RefreshCw className="mr-2 h-5 w-5 text-[#D13B28]" />
+                        <RefreshCw className="mr-2 h-5 w-5" />
                         الإرجاع والاستبدال
                       </h4>
-                      <ul className="space-y-3 text-[#FFFFFF]">
+                      <ul className="space-y-3 text-[#1F1F2A]">
                         <li className="flex items-start">
                           <Check className="mr-2 h-5 w-5 text-green-500 flex-shrink-0" />
                           <span>استرجاع مجاني خلال 14 يوم من تاريخ الاستلام</span>
@@ -685,12 +685,12 @@ const ProductDetail = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-[#1F1F2A] p-5 rounded-xl border border-[#A0A0A0]">
+                    <div className="bg-[#FFFFFF] p-5 rounded-xl border border-[#A0A0A0]/30">
                       <h4 className="font-medium text-lg flex items-center text-[#D13B28] mb-4">
-                        <Shield className="mr-2 h-5 w-5 text-[#D13B28]" />
+                        <Shield className="mr-2 h-5 w-5" />
                         الضمان
                       </h4>
-                      <ul className="space-y-3 text-[#FFFFFF]">
+                      <ul className="space-y-3 text-[#1F1F2A]">
                         <li className="flex items-start">
                           <Check className="mr-2 h-5 w-5 text-green-500 flex-shrink-0" />
                           <span>ضمان لمدة عام كامل على المنتج</span>
@@ -712,7 +712,7 @@ const ProductDetail = () => {
             
             <TabsContent value="faq" className="p-6 md:p-8">
               <div className="space-y-6">
-                <h3 className="text-xl font-bold text-[#FFFFFF]">الأسئلة الشائعة</h3>
+                <h3 className="text-xl font-bold text-[#1F1F2A]">الأسئلة الشائعة</h3>
                 <div className="space-y-4">
                   {[{
                   q: "هل المنتج يأتي مع ضمان؟",
@@ -729,23 +729,23 @@ const ProductDetail = () => {
                 }, {
                   q: "هل المنتج متوافق مع جميع الأجهزة؟",
                   a: "المنتج متوافق مع معظم الأجهزة الحديثة. يرجى التحقق من مواصفات التوافق في قسم المواصفات التقنية للتأكد."
-                }].map((item, i) => <div key={i} className="bg-[#1F1F2A] p-5 rounded-xl border border-[#A0A0A0]">
-                      <h4 className="font-medium mb-3 flex items-center text-[#FFFFFF]">
+                }].map((item, i) => <div key={i} className="bg-[#FFFFFF] p-5 rounded-xl border border-[#A0A0A0]/30">
+                      <h4 className="font-medium mb-3 flex items-center text-[#1F1F2A]">
                         <BadgeCheck className="text-[#D13B28] mr-2 h-5 w-5" />
                         {item.q}
                       </h4>
-                      <p className="text-[#A0A0A0] pl-7">{item.a}</p>
+                      <p className="text-[#1F1F2A] pl-7">{item.a}</p>
                     </div>)}
                   
-                  <div className="bg-[#1F1F2A] p-5 rounded-xl mt-6 border border-[#A0A0A0]">
-                    <h4 className="font-medium mb-3 flex items-center text-[#D13B28]">
-                      <AlertCircle className="text-[#D13B28] mr-2 h-5 w-5" />
+                  <div className="bg-[#1F1F2A]/10 p-5 rounded-xl mt-6">
+                    <h4 className="font-medium mb-3 flex items-center text-[#1F1F2A]">
+                      <AlertCircle className="text-[#1F1F2A] mr-2 h-5 w-5" />
                       هل لديك سؤال آخر؟
                     </h4>
-                    <p className="text-[#D13B28] mb-3">نحن هنا للمساعدة. تواصل معنا عبر:</p>
+                    <p className="text-[#1F1F2A] mb-3">نحن هنا للمساعدة. تواصل معنا عبر:</p>
                     <div className="flex flex-col sm:flex-row gap-2">
                       
-                      <Button variant="outline" className="bg-[#1F1F2A] border-[#A0A0A0] text-[#FFFFFF]">
+                      <Button variant="outline" className="bg-[#FFFFFF] border-[#A0A0A0]/30 text-[#1F1F2A]">
                         اتصل بنا: 07700000000
                       </Button>
                     </div>
@@ -768,7 +768,7 @@ const ProductDetail = () => {
         delay: 0.6
       }} className="mb-16">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-[#FFFFFF]">منتجات ذات صلة</h2>
+            <h2 className="text-2xl font-bold text-[#1F1F2A]">منتجات ذات صلة</h2>
             <Button variant="link" asChild className="text-[#D13B28]">
               <Link to={`/category/${product.category}`}>عرض المزيد</Link>
             </Button>
