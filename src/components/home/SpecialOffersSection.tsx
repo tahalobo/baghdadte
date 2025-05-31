@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Percent, Clock, Zap, ShieldCheck } from "lucide-react";
@@ -13,7 +12,6 @@ interface OfferCard {
   image: string;
   discount: number;
   link: string;
-  color: string;
   icon: React.ReactNode;
 }
 
@@ -25,7 +23,6 @@ const offers: OfferCard[] = [
     image: "/lovable-uploads/8c2df3b9-50c3-4839-b072-91db82a03f1d.png",
     discount: 40,
     link: "/deals",
-    color: "from-blue-50 to-indigo-100",
     icon: <Percent className="h-5 w-5" />,
   },
   {
@@ -35,7 +32,6 @@ const offers: OfferCard[] = [
     image: "/lovable-uploads/8c2df3b9-50c3-4839-b072-91db82a03f1d.png",
     discount: 30,
     link: "/deals",
-    color: "from-amber-50 to-orange-100",
     icon: <Zap className="h-5 w-5" />,
   },
   {
@@ -45,7 +41,6 @@ const offers: OfferCard[] = [
     image: "/lovable-uploads/8c2df3b9-50c3-4839-b072-91db82a03f1d.png",
     discount: 25,
     link: "/deals",
-    color: "from-emerald-50 to-green-100",
     icon: <ShieldCheck className="h-5 w-5" />,
   },
 ];
@@ -76,7 +71,7 @@ const SpecialOffersSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <motion.h2 
-            className="text-3xl font-bold mb-2"
+            className="text-3xl font-bold mb-2 text-[#1F1F2A]"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -85,7 +80,7 @@ const SpecialOffersSection: React.FC = () => {
             العروض والصفقات الخاصة
           </motion.h2>
           <motion.p 
-            className="text-gray-600 max-w-2xl mx-auto"
+            className="text-[#A0A0A0] max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -107,40 +102,40 @@ const SpecialOffersSection: React.FC = () => {
               key={offer.id}
               variants={itemVariants}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className={`rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br ${offer.color} border border-white/50`}
+              className="rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-[#1F1F2A]/5 to-white border border-[#A0A0A0]/20"
             >
               <div className="p-6 md:p-8">
                 <div className="flex items-center justify-between mb-4">
-                  <Badge variant="default" className="px-3 py-1 rounded-full bg-white/80 text-primary font-medium">
+                  <Badge className="px-3 py-1 rounded-full bg-[#D13B28] text-white font-medium">
                     {offer.discount}% خصم
                   </Badge>
-                  <div className="h-10 w-10 rounded-full bg-white/80 flex items-center justify-center text-primary">
+                  <div className="h-10 w-10 rounded-full bg-[#1F1F2A]/10 flex items-center justify-center text-[#D13B28]">
                     {offer.icon}
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-bold mb-2 text-gray-800">{offer.title}</h3>
-                <p className="text-gray-600 mb-6">{offer.description}</p>
+                <h3 className="text-xl font-bold mb-2 text-[#1F1F2A]">{offer.title}</h3>
+                <p className="text-[#A0A0A0] mb-6">{offer.description}</p>
                 
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="flex items-center text-gray-600 text-sm">
+                  <div className="flex items-center text-[#A0A0A0] text-sm">
                     <Clock className="h-4 w-4 ml-1" />
                     <span>لفترة محدودة</span>
                   </div>
                 </div>
                 
                 <div className="relative h-48 mb-6 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-white/20 rounded-full blur-3xl transform translate-x-1/4 translate-y-1/4 w-2/3 h-2/3"></div>
+                  <div className="absolute inset-0 bg-[#D13B28]/10 rounded-full blur-3xl transform translate-x-1/4 translate-y-1/4 w-2/3 h-2/3"></div>
                   <img
                     src={offer.image}
                     alt={offer.title}
-                    className="max-h-full max-w-full object-contain relative z-10 mix-blend-multiply"
+                    className="max-h-full max-w-full object-contain relative z-10"
                   />
                 </div>
                 
                 <Button 
                   onClick={() => navigate(offer.link)}
-                  className="w-full gap-2"
+                  className="w-full gap-2 bg-[#D13B28] hover:bg-[#D13B28]/90"
                   variant="default"
                 >
                   تسوق الآن
@@ -155,7 +150,7 @@ const SpecialOffersSection: React.FC = () => {
           <Button
             variant="outline"
             onClick={() => navigate('/deals')}
-            className="rounded-full"
+            className="rounded-full border-[#1F1F2A] text-[#1F1F2A] hover:bg-[#1F1F2A]/5"
             size="lg"
           >
             عرض جميع الصفقات
