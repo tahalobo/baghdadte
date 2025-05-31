@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowUp } from "lucide-react";
@@ -49,7 +48,7 @@ const ScrollToTopButton: React.FC = () => {
         >
           <Button 
             onClick={scrollToTop}
-            className="rounded-full w-12 h-12 bg-primary/80 backdrop-blur-sm hover:bg-primary shadow-lg relative overflow-hidden group"
+            className="rounded-full w-12 h-12 bg-[#D13B28]/80 backdrop-blur-sm hover:bg-[#D13B28] shadow-lg relative overflow-hidden group"
             aria-label="Scroll to top"
           >
             <ArrowUp className="h-5 w-5 text-white" />
@@ -66,7 +65,7 @@ const ScrollToTopButton: React.FC = () => {
                 stroke="currentColor"
                 strokeWidth="5"
                 fill="none"
-                className="text-primary-foreground/20"
+                className="text-[#1F1F2A]/20"
               />
               <circle
                 cx="50"
@@ -82,7 +81,7 @@ const ScrollToTopButton: React.FC = () => {
             </svg>
             
             {/* Tooltip */}
-            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black/70 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap backdrop-blur-sm">
+            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-[#1F1F2A]/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap backdrop-blur-sm">
               Scroll to top
             </div>
           </Button>
