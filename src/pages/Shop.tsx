@@ -182,10 +182,10 @@ const Shop: React.FC = () => {
       
       <main className="flex-grow pt-24">
         {/* Shop Header */}
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 py-10">
+        <div className="bg-gradient-to-r from-[#1F1F2A]/5 to-[#1F1F2A]/10 py-10">
           <div className="container mx-auto px-4">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center">المتجر</h1>
-            <p className="text-gray-600 text-center">تصفح مجموعتنا الواسعة من المنتجات</p>
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center text-[#1F1F2A]">المتجر</h1>
+            <p className="text-[#A0A0A0] text-center">تصفح مجموعتنا الواسعة من المنتجات</p>
           </div>
         </div>
         
@@ -194,8 +194,8 @@ const Shop: React.FC = () => {
           {isLoading ? (
             <div className="flex justify-center items-center py-20">
               <div className="text-center">
-                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
-                <p className="mt-4 text-gray-600">جاري تحميل المنتجات...</p>
+                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#D13B28] border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
+                <p className="mt-4 text-[#A0A0A0]">جاري تحميل المنتجات...</p>
               </div>
             </div>
           ) : (
@@ -204,7 +204,7 @@ const Shop: React.FC = () => {
               <div className="md:hidden mb-4">
                 <Button 
                   variant="outline" 
-                  className="w-full flex items-center justify-center"
+                  className="w-full flex items-center justify-center border-[#1F1F2A] text-[#1F1F2A] hover:bg-[#1F1F2A]/5"
                   onClick={() => setFilterOpen(!filterOpen)}
                 >
                   <Filter className="ml-2 h-4 w-4" />
@@ -220,13 +220,15 @@ const Shop: React.FC = () => {
                 bg-white md:bg-transparent shadow-md md:shadow-none p-4 md:p-0 rounded-lg
                 max-h-[70vh] md:max-h-full overflow-auto
                 transform transition-transform duration-300 ease-in-out
+                border border-[#A0A0A0]/20
               `}>
                 <div className="flex items-center justify-between sticky top-0 bg-white z-10 pb-2 mb-2 md:hidden">
-                  <h3 className="font-semibold text-lg">الفلاتر</h3>
+                  <h3 className="font-semibold text-lg text-[#1F1F2A]">الفلاتر</h3>
                   <Button 
                     variant="ghost" 
                     size="icon" 
                     onClick={() => setFilterOpen(false)}
+                    className="text-[#1F1F2A] hover:bg-[#1F1F2A]/5"
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -235,7 +237,7 @@ const Shop: React.FC = () => {
                 <div className="space-y-6">
                   {/* Categories */}
                   <div>
-                    <h3 className="font-semibold mb-3">الفئات</h3>
+                    <h3 className="font-semibold mb-3 text-[#1F1F2A]">الفئات</h3>
                     <div className="space-y-2">
                       {categories.map(category => (
                         <div 
@@ -243,8 +245,8 @@ const Shop: React.FC = () => {
                           onClick={() => setSelectedCategory(category)}
                           className={`cursor-pointer py-1 px-2 rounded-md transition-colors ${
                             selectedCategory === category 
-                              ? 'bg-primary/10 text-primary font-medium' 
-                              : 'hover:bg-gray-100'
+                              ? 'bg-[#D13B28]/10 text-[#D13B28] font-medium' 
+                              : 'hover:bg-[#1F1F2A]/5 text-[#1F1F2A]'
                           }`}
                         >
                           {category}
@@ -255,7 +257,7 @@ const Shop: React.FC = () => {
                   
                   {/* Price Range */}
                   <div>
-                    <h3 className="font-semibold mb-3">نطاق السعر (د.ع)</h3>
+                    <h3 className="font-semibold mb-3 text-[#1F1F2A]">نطاق السعر (د.ع)</h3>
                     <div className="px-2">
                       <Slider
                         defaultValue={[0, 150 * USD_TO_IQD_RATE]}
@@ -264,8 +266,11 @@ const Shop: React.FC = () => {
                         step={5000}
                         onValueChange={handlePriceChange}
                         className="mb-6"
+                        trackClassName="bg-[#1F1F2A]/20"
+                        rangeClassName="bg-[#D13B28]"
+                        thumbClassName="bg-[#D13B28] border-[#1F1F2A]"
                       />
-                      <div className="flex justify-between text-sm">
+                      <div className="flex justify-between text-sm text-[#1F1F2A]">
                         <span>{new Intl.NumberFormat('ar-IQ').format(priceRange[0])} د.ع</span>
                         <span>{new Intl.NumberFormat('ar-IQ').format(priceRange[1])} د.ع</span>
                       </div>
@@ -274,16 +279,16 @@ const Shop: React.FC = () => {
                   
                   {/* Other Filters */}
                   <div>
-                    <h3 className="font-semibold mb-3">فلاتر المنتجات</h3>
+                    <h3 className="font-semibold mb-3 text-[#1F1F2A]">فلاتر المنتجات</h3>
                     <div className="space-y-2">
                       <div className="flex items-center">
                         <Checkbox 
                           id="best-seller" 
                           checked={selectedFilters.bestSeller}
                           onCheckedChange={() => toggleFilter('bestSeller')}
-                          className="ml-2"
+                          className="ml-2 text-[#D13B28] border-[#A0A0A0]/30"
                         />
-                        <label htmlFor="best-seller" className="text-sm cursor-pointer">
+                        <label htmlFor="best-seller" className="text-sm cursor-pointer text-[#1F1F2A]">
                           الأكثر مبيعاً
                         </label>
                       </div>
@@ -292,9 +297,9 @@ const Shop: React.FC = () => {
                           id="new-arrival" 
                           checked={selectedFilters.newArrival}
                           onCheckedChange={() => toggleFilter('newArrival')}
-                          className="ml-2"
+                          className="ml-2 text-[#D13B28] border-[#A0A0A0]/30"
                         />
-                        <label htmlFor="new-arrival" className="text-sm cursor-pointer">
+                        <label htmlFor="new-arrival" className="text-sm cursor-pointer text-[#1F1F2A]">
                           وصل حديثاً
                         </label>
                       </div>
@@ -303,9 +308,9 @@ const Shop: React.FC = () => {
                           id="featured" 
                           checked={selectedFilters.featured}
                           onCheckedChange={() => toggleFilter('featured')}
-                          className="ml-2"
+                          className="ml-2 text-[#D13B28] border-[#A0A0A0]/30"
                         />
-                        <label htmlFor="featured" className="text-sm cursor-pointer">
+                        <label htmlFor="featured" className="text-sm cursor-pointer text-[#1F1F2A]">
                           منتجات مميزة
                         </label>
                       </div>
@@ -314,9 +319,9 @@ const Shop: React.FC = () => {
                           id="in-stock" 
                           checked={selectedFilters.inStock}
                           onCheckedChange={() => toggleFilter('inStock')}
-                          className="ml-2"
+                          className="ml-2 text-[#D13B28] border-[#A0A0A0]/30"
                         />
-                        <label htmlFor="in-stock" className="text-sm cursor-pointer">
+                        <label htmlFor="in-stock" className="text-sm cursor-pointer text-[#1F1F2A]">
                           متوفر في المخزون
                         </label>
                       </div>
@@ -325,10 +330,17 @@ const Shop: React.FC = () => {
                   
                   {/* Apply Filters */}
                   <div className="flex flex-col space-y-2 sticky bottom-0 bg-white pt-4 pb-2 md:relative md:pt-0 md:pb-0">
-                    <Button onClick={applyFilters}>
+                    <Button 
+                      onClick={applyFilters}
+                      className="bg-[#D13B28] hover:bg-[#D13B28]/90"
+                    >
                       تطبيق الفلاتر
                     </Button>
-                    <Button variant="outline" onClick={clearFilters}>
+                    <Button 
+                      variant="outline" 
+                      onClick={clearFilters}
+                      className="border-[#1F1F2A] text-[#1F1F2A] hover:bg-[#1F1F2A]/5"
+                    >
                       مسح الفلاتر
                     </Button>
                   </div>
@@ -341,12 +353,14 @@ const Shop: React.FC = () => {
                   <>
                     {/* Grid view toggle */}
                     <div className="flex items-center justify-between mb-4">
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-[#A0A0A0]">
                         عرض {paginatedProducts.length} من {filteredProducts.length} منتج
                       </div>
                       <ProductGridToggle 
                         view={gridView}
                         onChange={setGridView}
+                        activeColor="text-[#D13B28]"
+                        inactiveColor="text-[#A0A0A0]"
                       />
                     </div>
                     
@@ -362,16 +376,18 @@ const Shop: React.FC = () => {
                         currentPage={currentPage}
                         totalPages={totalPages}
                         onPageChange={handlePageChange}
+                        activeColor="bg-[#D13B28] text-white"
+                        inactiveColor="bg-white text-[#1F1F2A] border border-[#A0A0A0]/20"
                       />
                     )}
                   </>
                 ) : (
                   <div className="text-center py-12">
-                    <h3 className="text-xl font-medium">لم يتم العثور على منتجات</h3>
-                    <p className="text-gray-600 mt-2">حاول تعديل الفلاتر الخاصة بك</p>
+                    <h3 className="text-xl font-medium text-[#1F1F2A]">لم يتم العثور على منتجات</h3>
+                    <p className="text-[#A0A0A0] mt-2">حاول تعديل الفلاتر الخاصة بك</p>
                     <Button 
                       variant="outline" 
-                      className="mt-4"
+                      className="mt-4 border-[#1F1F2A] text-[#1F1F2A] hover:bg-[#1F1F2A]/5"
                       onClick={clearFilters}
                     >
                       إعادة تعيين الفلاتر
