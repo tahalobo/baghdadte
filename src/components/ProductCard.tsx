@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Product } from "@/types";
 import { useCart } from "@/contexts/CartContext";
@@ -26,7 +25,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
   const navigate = useNavigate();
   
   const handleCardClick = (e: React.MouseEvent) => {
-    // Always navigate to product detail page
     navigate(`/product/${product.id}`);
   };
 
@@ -63,7 +61,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
   return (
     <motion.div 
       className={cn(
-        "group relative overflow-hidden rounded-2xl bg-white border border-transparent transition-all duration-300 hover:border-primary/20 hover:shadow-xl h-full flex flex-col",
+        "group relative overflow-hidden rounded-2xl bg-white border border-transparent transition-all duration-300 hover:border-[#D13B28]/20 hover:shadow-xl h-full flex flex-col",
         className
       )}
       onClick={handleCardClick}
@@ -72,7 +70,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative overflow-hidden">
-        <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="aspect-[4/3] bg-gradient-to-br from-[#1F1F2A]/10 to-[#1F1F2A]/5">
           <motion.img 
             src="/lovable-uploads/e9f3b555-0da2-47b3-a199-b5ee1fced447.png"
             alt={product.name}
@@ -89,8 +87,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
               className={cn(
                 "flex items-center justify-center rounded-full w-10 h-10 shadow-md transition-colors",
                 isInWishlist(product.id) 
-                  ? "bg-red-50 text-red-500 hover:bg-red-100" 
-                  : "bg-white text-gray-700 hover:bg-primary hover:text-white"
+                  ? "bg-[#D13B28]/10 text-[#D13B28] hover:bg-[#D13B28]/20" 
+                  : "bg-white text-[#1F1F2A] hover:bg-[#D13B28] hover:text-white"
               )}
               onClick={toggleWishlist}
               whileHover={{ scale: 1.1 }}
@@ -98,13 +96,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
             >
               <Heart className={cn(
                 "h-5 w-5", 
-                isInWishlist(product.id) && "fill-red-500"
+                isInWishlist(product.id) && "fill-[#D13B28]"
               )} />
             </motion.button>
             
             <motion.button 
               className={cn(
-                "flex items-center justify-center rounded-full bg-primary w-10 h-10 text-white shadow-md transition-colors hover:bg-primary/90",
+                "flex items-center justify-center rounded-full bg-[#D13B28] w-10 h-10 text-white shadow-md transition-colors hover:bg-[#D13B28]/90",
                 (product.stock === 0 || isAddingToCart) && "cursor-not-allowed opacity-60"
               )}
               disabled={product.stock === 0 || isAddingToCart}
@@ -123,7 +121,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
             </motion.button>
 
             <motion.button 
-              className="flex items-center justify-center rounded-full bg-white w-10 h-10 text-gray-700 shadow-md transition-colors hover:bg-gray-50"
+              className="flex items-center justify-center rounded-full bg-white w-10 h-10 text-[#1F1F2A] shadow-md transition-colors hover:bg-[#1F1F2A]/10"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -139,19 +137,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
         
         <div className="absolute left-2 top-2 flex flex-col gap-1">
           {product.bestSeller && (
-            <Badge variant="default" className="bg-amber-500 text-white hover:bg-amber-600 text-xs rounded-full px-2 py-0.5 shadow-sm">
-        الأكثر مبيعاً
+            <Badge className="bg-[#1F1F2A] text-white hover:bg-[#1F1F2A]/90 text-xs rounded-full px-2 py-0.5 shadow-sm">
+              الأكثر مبيعاً
             </Badge>
           )}
           
           {product.newArrival && (
-            <Badge variant="default" className="bg-emerald-500 text-white hover:bg-emerald-600 text-xs rounded-full px-2 py-0.5 shadow-sm">
+            <Badge className="bg-[#1F1F2A] text-white hover:bg-[#1F1F2A]/90 text-xs rounded-full px-2 py-0.5 shadow-sm">
               جديد
             </Badge>
           )}
           
           {product.featured && (
-            <Badge variant="default" className="bg-purple-500 text-white hover:bg-purple-600 text-xs rounded-full px-2 py-0.5 shadow-sm">
+            <Badge className="bg-[#1F1F2A] text-white hover:bg-[#1F1F2A]/90 text-xs rounded-full px-2 py-0.5 shadow-sm">
               <Sparkles className="w-3 h-3 mr-1" />
               مميز
             </Badge>
@@ -160,7 +158,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
         
         {product.discount && (
           <div className="absolute right-2 top-2">
-            <Badge variant="destructive" className="rounded-full px-1.5 py-0.5 text-[10px] font-medium shadow-sm">
+            <Badge className="bg-[#D13B28] rounded-full px-1.5 py-0.5 text-[10px] font-medium shadow-sm">
               -{product.discount}%
             </Badge>
           </div>
@@ -168,24 +166,24 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
         
         {product.stock === 0 && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-            <span className="rounded-full bg-white/90 px-6 py-2 font-semibold text-red-600 shadow-md">
-            غير متوفر من المخزون
+            <span className="rounded-full bg-white/90 px-6 py-2 font-semibold text-[#D13B28] shadow-md">
+              غير متوفر من المخزون
             </span>
           </div>
         )}
       </div>
       
       <div className="flex flex-col p-4 flex-grow">
-        <span className="text-xs font-medium uppercase tracking-wider text-primary/80">
+        <span className="text-xs font-medium uppercase tracking-wider text-[#D13B28]/80">
           {product.category.replace('-', ' ')}
         </span>
         
-        <h3 className="mt-1 line-clamp-2 min-h-[40px] font-bold text-gray-800 transition-colors group-hover:text-primary/90">
+        <h3 className="mt-1 line-clamp-2 min-h-[40px] font-bold text-[#1F1F2A] transition-colors group-hover:text-[#D13B28]/90">
           {product.name}
         </h3>
         
         <div className="mt-2 flex items-center gap-1">
-          <div className="flex items-center text-xs font-medium text-gray-500">
+          <div className="flex items-center text-xs font-medium text-[#A0A0A0]">
             <Tag className="h-3 w-3 mr-1" />
             <span>ID: {product.id}</span>
           </div>
@@ -195,37 +193,37 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
           <div className="flex flex-col">
             {product.discount ? (
               <>
-                <span className="text-sm font-medium text-gray-400 line-through">
+                <span className="text-sm font-medium text-[#A0A0A0] line-through">
                   {formatPrice(product.price)}
                 </span>
-                <span className="text-xl font-bold text-primary">
+                <span className="text-xl font-bold text-[#D13B28]">
                   {formatPrice(discountedPrice)}
                 </span>
               </>
             ) : (
-              <span className="text-xl font-bold text-primary">
+              <span className="text-xl font-bold text-[#D13B28]">
                 {formatPrice(product.price)}
               </span>
             )}
           </div>
           
           {product.stock > 0 && product.stock <= 5 && (
-            <div className="flex items-center text-xs font-medium text-amber-600 bg-amber-50 px-2 py-1 rounded-full">
+            <div className="flex items-center text-xs font-medium text-[#D13B28] bg-[#D13B28]/10 px-2 py-1 rounded-full">
               <Clock className="mr-1 h-3 w-3" />
               <span>فقط {product.stock} بقي</span>
             </div>
           )}
         </div>
         
-        <div className="mt-3 flex flex-wrap gap-2 text-xs text-gray-500">
+        <div className="mt-3 flex flex-wrap gap-2 text-xs text-[#A0A0A0]">
           {product.featured && (
-            <div className="flex items-center bg-gray-50 px-2 py-1 rounded-full">
-              <BadgeCheck className="mr-1 h-3 w-3 text-primary" />
+            <div className="flex items-center bg-[#1F1F2A]/5 px-2 py-1 rounded-full">
+              <BadgeCheck className="mr-1 h-3 w-3 text-[#D13B28]" />
               <span>مميز</span>
             </div>
           )}
-          <div className="flex items-center bg-gray-50 px-2 py-1 rounded-full">
-            <Shield className="mr-1 h-3 w-3 text-primary" />
+          <div className="flex items-center bg-[#1F1F2A]/5 px-2 py-1 rounded-full">
+            <Shield className="mr-1 h-3 w-3 text-[#D13B28]" />
             <span>ضمان</span>
           </div>
         </div>
@@ -234,7 +232,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className, onProduct
           <Button 
             onClick={handleAddToCart} 
             disabled={product.stock === 0 || isAddingToCart}
-            className="w-full rounded-full"
+            className="w-full rounded-full bg-[#D13B28] hover:bg-[#D13B28]/90"
             variant="default"
             size="sm"
           >
