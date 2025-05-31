@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -30,11 +29,11 @@ const CategoriesSection: React.FC = () => {
 
   if (loading) {
     return (
-      <section className="section-padding bg-gradient-to-b from-gray-50 to-white py-16">
+      <section className="section-padding bg-gradient-to-b from-[#1F1F2A]/5 to-white py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold">تسوق حسب الفئة</h2>
-            <p className="text-gray-600 mt-2">جاري تحميل الفئات...</p>
+            <h2 className="text-3xl font-bold text-[#1F1F2A]">تسوق حسب الفئة</h2>
+            <p className="text-[#A0A0A0] mt-2">جاري تحميل الفئات...</p>
           </div>
         </div>
       </section>
@@ -42,11 +41,11 @@ const CategoriesSection: React.FC = () => {
   }
 
   return (
-    <section className="section-padding bg-gradient-to-b from-gray-50 to-white py-16">
+    <section className="section-padding bg-gradient-to-b from-[#1F1F2A]/5 to-white py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <motion.h2 
-            className="text-3xl font-bold"
+            className="text-3xl font-bold text-[#1F1F2A]"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -55,7 +54,7 @@ const CategoriesSection: React.FC = () => {
             تسوق حسب الفئة
           </motion.h2>
           <motion.p 
-            className="text-gray-600 mt-2"
+            className="text-[#A0A0A0] mt-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -75,14 +74,14 @@ const CategoriesSection: React.FC = () => {
               transition={{ delay: index * 0.1 }}
             >
               <Link to={`/category/${category.id}`}>
-                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 text-center group">
+                <div className="bg-white rounded-xl p-6 shadow-sm border border-[#A0A0A0]/20 hover:shadow-md transition-shadow duration-300 text-center group">
                   <div className="h-16 flex items-center justify-center mb-4">
-                    <div className="text-lg font-bold text-gray-600 group-hover:text-primary transition-colors">
+                    <div className="text-lg font-bold text-[#1F1F2A] group-hover:text-[#D13B28] transition-colors">
                       {category.name}
                     </div>
                   </div>
-                  <h3 className="font-medium text-gray-800 mb-1">{category.name}</h3>
-                  <p className="text-sm text-gray-500">كود: {category.code}</p>
+                  <h3 className="font-medium text-[#1F1F2A] mb-1">{category.name}</h3>
+                  <p className="text-sm text-[#A0A0A0]">كود: {category.code}</p>
                 </div>
               </Link>
             </motion.div>
@@ -91,7 +90,11 @@ const CategoriesSection: React.FC = () => {
         
         {categories.length > 0 && (
           <div className="text-center mt-8">
-            <Button asChild variant="outline">
+            <Button 
+              asChild 
+              variant="outline"
+              className="border-[#1F1F2A] text-[#1F1F2A] hover:bg-[#1F1F2A]/5"
+            >
               <Link to="/categories">عرض جميع الفئات</Link>
             </Button>
           </div>
