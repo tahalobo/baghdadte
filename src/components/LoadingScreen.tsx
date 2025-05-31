@@ -1,4 +1,3 @@
-
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -17,7 +16,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
 
   return (
     <motion.div 
-      className="fixed inset-0 bg-white bg-opacity-90 backdrop-blur-sm z-50 flex flex-col items-center justify-center"
+      className="fixed inset-0 bg-[#FFFFFF] bg-opacity-90 backdrop-blur-sm z-50 flex flex-col items-center justify-center"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
@@ -34,14 +33,25 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
             scale: { duration: 1.5, repeat: Infinity }
           }}
         >
-          <div className="w-16 h-16 rounded-full border-4 border-transparent border-t-primary border-b-primary mx-auto"></div>
+          <div 
+            className="w-16 h-16 rounded-full border-4 border-transparent mx-auto"
+            style={{
+              borderTopColor: '#D13B28',
+              borderBottomColor: '#D13B28'
+            }}
+          ></div>
         </motion.div>
         
-        <h3 className="text-xl font-bold text-gray-800 mb-4">{message}</h3>
+        <h3 
+          className="text-xl font-bold mb-4"
+          style={{ color: '#1F1F2A' }}
+        >
+          {message}
+        </h3>
         
         <div className="space-y-2 mb-6">
-          <Skeleton className="h-4 w-3/4 mx-auto" />
-          <Skeleton className="h-4 w-1/2 mx-auto" />
+          <Skeleton className="h-4 w-3/4 mx-auto bg-[#A0A0A0]" />
+          <Skeleton className="h-4 w-1/2 mx-auto bg-[#A0A0A0]" />
         </div>
         
         <div className="flex justify-center space-x-2 mb-4">
@@ -57,12 +67,16 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
                 repeat: Infinity,
                 delay: i * 0.15,
               }}
-              className="bg-primary w-2 h-2 rounded-full"
+              className="w-2 h-2 rounded-full"
+              style={{ backgroundColor: '#D13B28' }}
             />
           ))}
         </div>
         
-        <p className="text-gray-500 text-sm">
+        <p 
+          className="text-sm"
+          style={{ color: '#A0A0A0' }}
+        >
           جاري جلب البيانات من الخادم، يرجى الانتظار...
         </p>
       </div>
