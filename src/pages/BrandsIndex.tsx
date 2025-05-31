@@ -11,7 +11,14 @@ import { rtlAwareClasses } from "@/lib/rtl-utils";
 import ProductPagination from "@/components/ProductPagination";
 import { getBrands, ApiBrand } from "@/utils/brandsApi";
 
-const gradients = ["bg-gradient-to-r from-blue-800 to-indigo-900", "bg-gradient-to-r from-purple-800 to-indigo-900", "bg-gradient-to-r from-gray-800 to-gray-900", "bg-gradient-to-r from-red-700 to-rose-800", "bg-gradient-to-r from-amber-600 to-orange-700", "bg-gradient-to-r from-sky-600 to-cyan-700"];
+const gradients = [
+  "bg-gradient-to-r from-[#1F1F2A] to-[#1F1F2A]/90",
+  "bg-gradient-to-r from-[#1F1F2A] to-[#1F1F2A]/90",
+  "bg-gradient-to-r from-[#1F1F2A] to-[#1F1F2A]/90",
+  "bg-gradient-to-r from-[#1F1F2A] to-[#1F1F2A]/90",
+  "bg-gradient-to-r from-[#1F1F2A] to-[#1F1F2A]/90",
+  "bg-gradient-to-r from-[#1F1F2A] to-[#1F1F2A]/90"
+];
 const ITEMS_PER_PAGE = 7;
 
 const BrandsIndex: React.FC = () => {
@@ -58,8 +65,8 @@ const BrandsIndex: React.FC = () => {
       <Header />
       <main className="flex-grow pt-24">
         <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-3xl font-bold mb-4">جاري تحميل العلامات التجارية...</h1>
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <h1 className="text-3xl font-bold mb-4 text-[#1F1F2A]">جاري تحميل العلامات التجارية...</h1>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#D13B28] mx-auto"></div>
         </div>
       </main>
       <Footer />
@@ -71,7 +78,7 @@ const BrandsIndex: React.FC = () => {
     
     <main className="flex-grow pt-24">
       {/* Hero section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 py-16 md:py-24">
+      <section className="bg-gradient-to-r from-[#1F1F2A] to-[#1F1F2A]/90 py-16 md:py-24">
         <div className="container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} 
                      animate={{ opacity: 1, y: 0 }} 
@@ -79,12 +86,12 @@ const BrandsIndex: React.FC = () => {
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
               أفضل العلامات التجارية التقنية
             </h1>
-            <p className="text-blue-100 max-w-2xl mx-auto mb-8">
+            <p className="text-[#A0A0A0] max-w-2xl mx-auto mb-8">
               استكشف المنتجات المتميزة من أكثر العلامات التجارية التقنية الموثوقة في العالم.
               اكتشف الحلول المبتكرة من رواد الصناعة.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-white text-blue-700 hover:bg-blue-50">
+              <Button asChild size="lg" className="bg-[#D13B28] text-white hover:bg-[#D13B28]/90">
                 <Link to="/shop">تسوق جميع المنتجات</Link>
               </Button>
             </div>
@@ -93,7 +100,7 @@ const BrandsIndex: React.FC = () => {
       </section>
       
       {/* Brand Advantages */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-[#FFFFFF]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* ... Advantage cards ... */}
@@ -102,11 +109,11 @@ const BrandsIndex: React.FC = () => {
       </section>
       
       {/* Featured Brands */}
-      <section id="featured-brands" className="py-12 bg-gray-50">
+      <section id="featured-brands" className="py-12 bg-[#FFFFFF]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">العلامات المميزة</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-[#1F1F2A]">العلامات المميزة</h2>
+            <p className="text-[#A0A0A0] max-w-2xl mx-auto">
               استكشف مجموعتنا من المنتجات الفاخرة من هذه العلامات التجارية الرائدة في الصناعة.
             </p>
           </div>
@@ -118,7 +125,7 @@ const BrandsIndex: React.FC = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: index * 0.1 }}
-                        className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 group">
+                        className="bg-[#FFFFFF] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-[#A0A0A0]/30 group">
                 <div className={`h-32 flex items-center justify-center p-4 ${gradients[index % gradients.length]}`}>
                   <div className="text-2xl font-bold text-white">
                     {brand.name}
@@ -126,11 +133,11 @@ const BrandsIndex: React.FC = () => {
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{brand.name}</h3>
-                  <p className="text-sm text-gray-500 mb-4">كود: {brand.code}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-[#1F1F2A]">{brand.name}</h3>
+                  <p className="text-sm text-[#A0A0A0] mb-4">كود: {brand.code}</p>
                   
                   <div className="flex items-center justify-between">
-                    <Button asChild variant="ghost" size="sm" className="text-gray-600 hover:text-primary transition-colors">
+                    <Button asChild variant="ghost" size="sm" className="text-[#A0A0A0] hover:text-[#D13B28] transition-colors">
                       <Link to={`/brand/${brand.id}`} className={rtlAwareClasses(isRTL, "flex items-center gap-1", "flex items-center gap-1 flex-row-reverse")}>
                         عرض العلامة التجارية
                         <ChevronRight className="h-4 w-4" />
@@ -154,13 +161,13 @@ const BrandsIndex: React.FC = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-indigo-700">
+      <section className="py-16 bg-gradient-to-r from-[#1F1F2A] to-[#1F1F2A]/90">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">هل أنت جاهز للتسوق؟</h2>
-          <p className="text-blue-100 max-w-2xl mx-auto mb-8">
+          <p className="text-[#A0A0A0] max-w-2xl mx-auto mb-8">
             تصفح مجموعتنا الواسعة من المنتجات المتميزة من أكثر العلامات التجارية الموثوقة في العالم.
           </p>
-          <Button asChild size="lg" className="bg-white text-blue-700 hover:bg-blue-50">
+          <Button asChild size="lg" className="bg-[#D13B28] text-white hover:bg-[#D13B28]/90">
             <Link to="/shop">تسوق جميع المنتجات</Link>
           </Button>
         </div>
