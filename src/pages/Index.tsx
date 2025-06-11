@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -21,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import PopularProducts from "@/components/home/PopularProducts";
 import DiscountedProducts from "@/components/home/DiscountedProducts";
 import CategoryFeature from "@/components/home/CategoryFeature";
+import LatestProducts from "@/components/home/LatestProducts";
 
 const Index: React.FC = () => {
   const navigate = useNavigate();
@@ -77,6 +79,14 @@ const Index: React.FC = () => {
         amount: 0.2
       }} variants={sectionVariants}>
           <FeaturedProducts onProductClick={openProductModal} />
+        </motion.div>
+
+        {/* Latest Products Section */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{
+        once: true,
+        amount: 0.2
+      }} variants={sectionVariants}>
+          <LatestProducts />
         </motion.div>
         
         {/* New Brands Section */}
